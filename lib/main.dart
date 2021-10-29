@@ -13,6 +13,7 @@ class MyThemeData {
   static final unselectedIconColor =  Color.fromRGBO(255, 255, 255, 1.0);
   static final blackColor = Color.fromRGBO(5, 5, 5, 1);
   static final ayatColor = Color.fromRGBO(248, 248, 248, 1.0);
+  static final tasbeehCountColor = Color.fromRGBO(200, 179, 150, 1.0);
 }
 
 class MyApp extends StatelessWidget {
