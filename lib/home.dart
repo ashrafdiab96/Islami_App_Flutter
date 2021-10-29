@@ -59,15 +59,15 @@ class _HomeScreenState extends State<HomeScreen> {
               unselectedItemColor: MyThemeData.unselectedIconColor,
               items: [
                 BottomNavigationBarItem(
-                  label: 'Ahadeth',
+                  label: 'Quran',
                   icon: ImageIcon(AssetImage('assets/images/ic_moshaf.png'), size: 40,),
                 ),
                 BottomNavigationBarItem(
-                  label: 'Moshaf',
+                  label: 'Sebha',
                   icon: ImageIcon(AssetImage('assets/images/ic_sebha.png'), size: 40,)
                 ),
                 BottomNavigationBarItem(
-                  label: 'Quran',
+                  label: 'Ahadeeth',
                   icon: ImageIcon(AssetImage('assets/images/ic_quran.png'), size: 40,),
                 ),
                 BottomNavigationBarItem(
@@ -88,9 +88,9 @@ class _HomeScreenState extends State<HomeScreen> {
       case 0:
         return QuranTab();
       case 1:
-        return HadeethTab();
-      case 2:
         return SebhaTab();
+      case 2:
+        return HadeethTab();
       case 3:
         return RadioTab();
     }
