@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:islami/hadeth/hadeethDetails.dart';
 import 'package:islami/home.dart';
 import 'package:islami/quran/soraDetails.dart';
 
@@ -14,6 +15,7 @@ class MyThemeData {
   static final blackColor = Color.fromRGBO(5, 5, 5, 1);
   static final ayatColor = Color.fromRGBO(248, 248, 248, 1.0);
   static final tasbeehCountColor = Color.fromRGBO(200, 179, 150, 1.0);
+  static final hadeethTitleSeparator = Color.fromRGBO(196, 189, 189, 1.0);
 }
 
 class MyApp extends StatelessWidget {
@@ -37,6 +39,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName: (builldContext) => HomeScreen(),
         SoraDetailsScreen.routeName: (builldContext) => SoraDetailsScreen(),
+        HadeethDetailsScreen.routeName: (builldContext) => HadeethDetailsScreen(),
       },
       initialRoute: HomeScreen.routeName,
     );
