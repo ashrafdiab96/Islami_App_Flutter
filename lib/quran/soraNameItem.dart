@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/quran/soraDetails.dart';
 
+import '../main.dart';
+
 class SoraNameItem extends StatelessWidget {
   String? soraName;
   int? soraAya;
@@ -21,18 +23,29 @@ class SoraNameItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Container(
-            padding: EdgeInsets.all(5),
-            child: Text(
-              '$soraAya',
-              style: TextStyle(fontSize: 24),
-            ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              child: Text(
+                '$soraAya',
+                style: TextStyle(fontSize: 24,),
+                textAlign: TextAlign.center,
+              ),
+            )
           ),
           Container(
-            padding: EdgeInsets.all(5),
-            child: Text(
-              '$soraName',
-              style: TextStyle(fontSize: 24),
+            height: 40,
+            width: 2,
+            color: MyThemeData.primaryColor,
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              child: Text(
+                '$soraName',
+                style: TextStyle(fontSize: 24,),
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ],

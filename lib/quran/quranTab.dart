@@ -43,18 +43,30 @@ class QuranTab extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                'عدد الايات',
-                style: TextStyle(fontSize: 24),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  child: Text(
+                    'عدد الايات',
+                    style: TextStyle(fontSize: 24,),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
               Container(
                 height: 40,
                 width: 2,
                 color: MyThemeData.primaryColor,
               ),
-              Text(
-                'اسم السورة',
-                style: TextStyle(fontSize: 24),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  child: Text(
+                    'اسم السورة',
+                    style: TextStyle(fontSize: 24,),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
             ],
           )
