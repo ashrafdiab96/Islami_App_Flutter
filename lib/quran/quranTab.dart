@@ -66,7 +66,14 @@ class QuranTab extends StatelessWidget {
         ),
         Expanded(
           flex: 3,
-          child: ListView.builder(
+          child: ListView.separated(
+            separatorBuilder: (builldContext, index) {
+              return Container(
+                height: 1,
+                width: double.infinity,
+                color: MyThemeData.hadeethTitleSeparator,
+              );
+            },
             itemBuilder: (builldContext, index) {
               return SoraNameItem(soraName: soraName[index], soraAya: soraAya[index], soraIndex: index);
             },
