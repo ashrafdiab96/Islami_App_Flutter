@@ -1,26 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:islami/hadeth/hadeethNameItem.dart';
 
 import '../main.dart';
 
-class HadeethTab extends StatelessWidget {
-  final List<String> hadeethTitle = [
-    'الحديث الأول', 'الحديث الثاني', 'الحديث الـثـالـث', 'الحديث الـرابع', 'الحديث الخامس', 'الحديث السادس',
-    'الحديث السابع', 'الحديث الثامن', 'الحديث التاسع', 'الحديث العاشر', 'الحديث الحادي عشر', 'الحديث الثاني عشر',
-    'الحديث الثالث عشر', 'الحديث الرابع عشر', 'الحديث الخامس عشر', 'الحديث السادس عشر', 'الحديث السابع عشر',
-    'الحديث الثامن عشر', 'الحديث التاسع عشر', 'الحد يث العشرون', 'الحديث الحادي والعشرون', 'الحديث الثاني والعشرون',
-    'الحديث الثالث والعشرون', 'الـحديث الرابع والعشرون', 'الحديث الخامس والعشرون', 'الحديث السادس والعشرون',
-    'الحديث السابع والعشرون', 'الحديث الثامن والعشرون', 'الحديث التاسع والعشرون', 'الحديث الثلاثــون',
-    'الـحديث الحادي والثلاثون', 'الحديث الثاني والثلاثون', 'الحديث الثالث والثلاثون', 'الحديث الرابع والثلاثون',
-    'الحديث الخامس والثلاثون', 'الحديث السادس والثلاثون', 'الحديث السابع والثلاثون', 'الـحديث الثامن والثلاثون',
-    'الحديث التاسع والثلاثون', 'الحديث الأربعون', 'الحديث الحادي والأربعون', 'الحديث الثاني والأربعـون',
-    'الحديث الثالث والأربعون', 'الحديث الرابع والأربعون', 'الـحديث الخامس والأربعون', 'الحديث السادس والأربعون',
-    'الحديث السابع والأربعون', 'الـحديث الثامن والأربعون', 'الحديث التاسع والأربعون', 'الحديث الخمسون',
-  ];
+class HadeethTab extends StatefulWidget {
+  @override
+  _HadeethTabState createState() => _HadeethTabState();
+}
+
+class _HadeethTabState extends State {
+  List<Hadeeth> verse = [];
 
   @override
   Widget build(BuildContext context) {
+    if (verse.isEmpty) {
+      loadHadeethContent();
+    }
+
     return Column(
       children: [
         Expanded(
@@ -54,12 +52,37 @@ class HadeethTab extends StatelessWidget {
               );
             },
             itemBuilder: (builldContext, index) {
-              return HadeethNameItem(hadeethName: hadeethTitle[index], hadeethIndex: index);
+              return HadeethNameItem(hadeeth: verse[index]);
             },
-            itemCount: hadeethTitle.length,
+            itemCount: verse.length,
           ),
         )
       ],
     );
   }
+
+  void loadHadeethContent () async {
+    for (int i = 1; i <= 50; i++) {
+      String content = await rootBundle.loadString('assets/hadeeth/$i.txt');
+      List<String> lines = content.split('\n');
+      String hadeethTitle = lines[0];
+      String hadeethContent = '';
+      for (int j = 1; j < lines.length; j++) {
+        hadeethContent += lines[j];
+      }
+      var h = Hadeeth(title: hadeethTitle, content: hadeethContent);
+      setState(() {
+        this.verse.add(h);
+      });
+    }
+  }
+
 }
+
+class Hadeeth {
+  String? title;
+  String? content;
+  Hadeeth({required this.title, required this.content});
+}
+
+

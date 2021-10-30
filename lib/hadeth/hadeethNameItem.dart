@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/hadeth/hadeethDetails.dart';
 
+import 'hadethTab.dart';
+
 class HadeethNameItem extends StatelessWidget {
-  String? hadeethName;
-  int? hadeethIndex;
-  HadeethNameItem({required this.hadeethName, required this.hadeethIndex});
+  Hadeeth hadeeth;
+  HadeethNameItem({required this.hadeeth});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class HadeethNameItem extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(
           context, HadeethDetailsScreen.routeName,
-          arguments: HadeethDetailsArgs(hadeethName: hadeethName, hadeethIndex: hadeethIndex)
+          arguments: hadeeth
         );
       },
       child: Row(
@@ -22,7 +23,7 @@ class HadeethNameItem extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(5),
             child: Text(
-              '$hadeethName',
+              '${hadeeth.title}',
               style: TextStyle(fontSize: 24),
             ),
           )
